@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, TrendingUp } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,8 +28,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
-            <TrendingUp className="h-8 w-8 text-gray-900" />
-            <span className="text-2xl font-bold text-gray-900">Affluent</span>
+            <img src="https://payhip.com/cdn-cgi/image/format=auto/https://pe56d.s3.amazonaws.com/o_1itbtu3vu8861oaa4es1d1td8sc.jpg" alt="Affluent Logo" className="h-10 object-contain filter brightness-150 contrast-125" />
           </div>
 
           {/* Desktop Navigation */}

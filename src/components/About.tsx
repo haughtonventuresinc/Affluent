@@ -1,4 +1,3 @@
-import React from 'react';
 import { Target, Users, TrendingUp, Award } from 'lucide-react';
 
 const About = () => {
@@ -62,8 +61,8 @@ const About = () => {
           <h3 className="text-3xl font-bold text-gray-900 mb-12 text-center">Our Core Values</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center">
-                <div className="bg-gradient-to-r from-yellow-400 to-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-white">
+              <div key={index} className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center">
+                <div className="bg-gradient-to-r from-gray-700 to-gray-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-white">
                   {value.icon}
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h4>
@@ -75,12 +74,12 @@ const About = () => {
 
         {/* Stats */}
         <div className="mb-16">
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="bg-gradient-to-br from-white/80 to-gray-100/90 backdrop-blur-sm rounded-2xl shadow-lg p-8">
             <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Our Impact</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2">
+                  <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-700 to-gray-900 mb-2">
                     {stat.number}
                   </div>
                   <div className="text-gray-600 font-medium">{stat.label}</div>
@@ -92,7 +91,7 @@ const About = () => {
 
         {/* Team & Community */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="bg-white rounded-xl p-8 shadow-lg">
+          <div className="bg-gradient-to-tl from-white/80 to-gray-100/90 backdrop-blur-sm rounded-xl p-8 shadow-lg">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Built by Entrepreneurs</h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
               Affluent was founded by successful entrepreneurs who understand the challenges of building 
@@ -105,7 +104,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-8">
+          <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Join Our Community</h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
               When you become part of Affluent, you're not just buying products – you're joining a 
@@ -113,19 +112,19 @@ const About = () => {
             </p>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-gradient-to-r from-gray-700 to-gray-900 rounded-full"></div>
                 <span className="text-gray-700">Exclusive member-only content and events</span>
               </div>
               <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-gradient-to-r from-gray-700 to-gray-900 rounded-full"></div>
                 <span className="text-gray-700">Direct access to successful entrepreneurs</span>
               </div>
               <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-gradient-to-r from-gray-700 to-gray-900 rounded-full"></div>
                 <span className="text-gray-700">Networking opportunities with like-minded individuals</span>
               </div>
               <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-gradient-to-r from-gray-700 to-gray-900 rounded-full"></div>
                 <span className="text-gray-700">Early access to new products and resources</span>
               </div>
             </div>

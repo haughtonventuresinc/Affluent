@@ -1,4 +1,3 @@
-import React from 'react';
 import { BookOpen, Users, Calendar, Star } from 'lucide-react';
 
 const BookClub = () => {
@@ -54,7 +53,7 @@ const BookClub = () => {
   ];
 
   return (
-    <section id="bookclub" className="py-20 bg-white">
+    <section id="bookclub" className="py-20 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -69,12 +68,12 @@ const BookClub = () => {
           {/* Featured Books */}
           <div>
             <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
-              <BookOpen className="h-6 w-6 mr-3 text-yellow-500" />
+              <BookOpen className="h-6 w-6 mr-3 text-gray-500" />
               Currently Reading
             </h3>
             <div className="space-y-6">
               {featuredBooks.map((book, index) => (
-                <div key={index} className="group bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
+                <div key={index} className="group bg-white/90 backdrop-blur-sm rounded-xl p-6 hover:bg-gray-100/90 transition-all duration-300 transform hover:scale-105">
                   <div className="flex space-x-4">
                     <img 
                       src={book.image} 
@@ -87,7 +86,7 @@ const BookClub = () => {
                           <h4 className="text-lg font-semibold text-gray-900">{book.title}</h4>
                           <p className="text-gray-600">by {book.author}</p>
                         </div>
-                        <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-2 py-1 rounded-full text-xs font-semibold">
+                        <span className="bg-gradient-to-r from-gray-700 to-gray-900 text-white px-2 py-1 rounded-full text-xs font-semibold">
                           {book.category}
                         </span>
                       </div>
@@ -97,7 +96,7 @@ const BookClub = () => {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4">
                           <div className="flex items-center space-x-1">
-                            <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                            <Star className="h-4 w-4 text-gray-500 fill-current" />
                             <span className="text-sm font-semibold text-gray-700">{book.rating}</span>
                           </div>
                           <div className="flex items-center space-x-1">
@@ -126,7 +125,7 @@ const BookClub = () => {
               {upcomingEvents.map((event, index) => (
                 <div key={index} className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 hover:from-gray-100 hover:to-gray-200 transition-all duration-300">
                   <div className="flex items-center space-x-4">
-                    <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black rounded-lg p-3 text-center min-w-[60px]">
+                    <div className="bg-gradient-to-r from-gray-700 to-gray-900 text-white rounded-lg p-3 text-center min-w-[60px]">
                       <div className="text-lg font-bold">{event.date.split(' ')[1]}</div>
                       <div className="text-xs">{event.date.split(' ')[0]}</div>
                     </div>
@@ -150,10 +149,10 @@ const BookClub = () => {
               </p>
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-2xl font-bold text-yellow-400">$19</span>
+                  <span className="text-2xl font-bold text-gray-400">$19</span>
                   <span className="text-gray-300">/month</span>
                 </div>
-                <button className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 py-3 rounded-lg font-semibold hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 transform hover:scale-105">
+                <button className="bg-gradient-to-r from-gray-700 to-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
                   Join Now
                 </button>
               </div>
@@ -162,25 +161,25 @@ const BookClub = () => {
         </div>
 
         {/* Book Club Benefits */}
-        <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-8">
+        <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl p-8">
           <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Book Club Benefits</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="bg-gradient-to-r from-yellow-400 to-orange-500 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-gradient-to-r from-gray-700 to-gray-900 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                 <BookOpen className="h-6 w-6 text-white" />
               </div>
               <h4 className="text-lg font-semibold text-gray-900 mb-2">Curated Reading List</h4>
               <p className="text-gray-600 text-sm">Carefully selected books that accelerate your growth and success.</p>
             </div>
             <div className="text-center">
-              <div className="bg-gradient-to-r from-yellow-400 to-orange-500 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-gradient-to-r from-gray-700 to-gray-900 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="h-6 w-6 text-white" />
               </div>
               <h4 className="text-lg font-semibold text-gray-900 mb-2">Community Discussions</h4>
               <p className="text-gray-600 text-sm">Engage with like-minded individuals and share insights.</p>
             </div>
             <div className="text-center">
-              <div className="bg-gradient-to-r from-yellow-400 to-orange-500 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-gradient-to-r from-gray-700 to-gray-900 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Star className="h-6 w-6 text-white" />
               </div>
               <h4 className="text-lg font-semibold text-gray-900 mb-2">Exclusive Content</h4>

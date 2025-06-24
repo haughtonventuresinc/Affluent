@@ -1,4 +1,3 @@
-import React from 'react';
 import { BookOpen, Play, Download, Award } from 'lucide-react';
 
 const DigitalGoods = () => {
@@ -36,7 +35,7 @@ const DigitalGoods = () => {
   ];
 
   return (
-    <section id="digital" className="py-20 bg-white">
+    <section id="digital" className="py-20 bg-gradient-to-br from-gray-200 to-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -49,7 +48,7 @@ const DigitalGoods = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {digitalItems.map((item) => (
-            <div key={item.id} className="group bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+            <div key={item.id} className="group bg-gradient-to-br from-white/80 to-gray-100/90 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="relative overflow-hidden">
                 <img 
                   src={item.image} 
@@ -61,7 +60,7 @@ const DigitalGoods = () => {
                   {item.icon}
                 </div>
                 <div className="absolute top-4 right-4">
-                  <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full text-sm font-semibold">
+                  <span className="bg-gradient-to-r from-gray-700 to-gray-900 text-white px-3 py-1 rounded-full text-sm font-semibold">
                     {item.type}
                   </span>
                 </div>
@@ -77,7 +76,7 @@ const DigitalGoods = () => {
                 <div className="space-y-2 mb-6">
                   {item.features.map((feature, index) => (
                     <div key={index} className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"></div>
+                      <div className="w-2 h-2 bg-gradient-to-r from-gray-700 to-gray-900 rounded-full"></div>
                       <span className="text-sm text-gray-600">{feature}</span>
                     </div>
                   ))}
@@ -98,10 +97,10 @@ const DigitalGoods = () => {
             <p className="text-gray-300 mb-6">Get unlimited access to all current and future digital resources</p>
             <div className="flex items-center justify-center space-x-4 mb-6">
               <span className="text-2xl text-gray-300 line-through">$499</span>
-              <span className="text-4xl font-bold text-yellow-400">$297</span>
+              <span className="text-4xl font-bold text-gray-400">$297</span>
               <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm">40% OFF</span>
             </div>
-            <button className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 rounded-full text-lg font-semibold hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 transform hover:scale-105">
+            <button className="bg-gradient-to-r from-gray-700 to-gray-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
               Unlock Everything
             </button>
           </div>

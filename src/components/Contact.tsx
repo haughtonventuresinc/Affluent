@@ -25,7 +25,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -38,7 +38,7 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-gray-50 rounded-2xl p-8">
+          <div className="bg-gradient-to-br from-white/80 to-gray-100/90 backdrop-blur-sm rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -53,7 +53,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-300"
                     placeholder="Your full name"
                   />
                 </div>
@@ -68,7 +68,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-300"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -84,7 +84,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-300"
                 >
                   <option value="">Select a subject</option>
                   <option value="general">General Inquiry</option>
@@ -107,14 +107,14 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300 resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-300 resize-none"
                   placeholder="Tell us how we can help you..."
                 ></textarea>
               </div>
               
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-black py-4 px-6 rounded-lg font-semibold hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+                className="w-full bg-gradient-to-r from-gray-700 to-gray-900 text-white py-4 px-6 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
               >
                 <Send className="h-5 w-5" />
                 <span>Send Message</span>
@@ -134,8 +134,8 @@ const Contact = () => {
 
             {/* Contact Methods */}
             <div className="space-y-6">
-              <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                <div className="bg-gradient-to-r from-yellow-400 to-orange-500 p-3 rounded-full">
+              <div className="flex items-center space-x-4 p-4 bg-gray-50/80 rounded-lg hover:bg-gray-100/90 backdrop-blur-sm transition-colors">
+                <div className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full">
                   <Mail className="h-6 w-6 text-white" />
                 </div>
                 <div>
@@ -144,8 +144,8 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                <div className="bg-gradient-to-r from-yellow-400 to-orange-500 p-3 rounded-full">
+              <div className="flex items-center space-x-4 p-4 bg-gray-50/80 rounded-lg hover:bg-gray-100/90 backdrop-blur-sm transition-colors">
+                <div className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full">
                   <Phone className="h-6 w-6 text-white" />
                 </div>
                 <div>
@@ -154,8 +154,8 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                <div className="bg-gradient-to-r from-yellow-400 to-orange-500 p-3 rounded-full">
+              <div className="flex items-center space-x-4 p-4 bg-gray-50/80 rounded-lg hover:bg-gray-100/90 backdrop-blur-sm transition-colors">
+                <div className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full">
                   <MapPin className="h-6 w-6 text-white" />
                 </div>
                 <div>
@@ -171,19 +171,19 @@ const Contact = () => {
               <div className="flex space-x-4">
                 <a 
                   href="#" 
-                  className="bg-gradient-to-r from-yellow-400 to-orange-500 p-3 rounded-full text-white hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 transform hover:scale-110"
+                  className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full text-white hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-110"
                 >
                   <Instagram className="h-6 w-6" />
                 </a>
                 <a 
                   href="#" 
-                  className="bg-gradient-to-r from-yellow-400 to-orange-500 p-3 rounded-full text-white hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 transform hover:scale-110"
+                  className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full text-white hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-110"
                 >
                   <Twitter className="h-6 w-6" />
                 </a>
                 <a 
                   href="#" 
-                  className="bg-gradient-to-r from-yellow-400 to-orange-500 p-3 rounded-full text-white hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 transform hover:scale-110"
+                  className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full text-white hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-110"
                 >
                   <Linkedin className="h-6 w-6" />
                 </a>
@@ -196,7 +196,7 @@ const Contact = () => {
               <p className="text-gray-300 mb-4">
                 Join our affiliate program and earn commissions by sharing products you believe in.
               </p>
-              <button className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 py-3 rounded-lg font-semibold hover:from-yellow-300 hover:to-orange-400 transition-all duration-300 transform hover:scale-105">
+              <button className="bg-gradient-to-r from-gray-700 to-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
                 Learn More
               </button>
             </div>
