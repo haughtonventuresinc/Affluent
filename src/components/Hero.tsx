@@ -9,7 +9,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center">
+    <section id="hero" className="relative min-h-screen bg-black flex items-center">
       <div className="absolute inset-0 bg-black/20"></div>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="flex justify-center mb-8">
@@ -18,7 +18,7 @@ const Hero = () => {
           </div>
         </div>
         
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+        <h1 className="text-5xl md:text-7xl font-bold text-gray-300 mb-6 leading-tight">
           Build. Learn.
           <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-300">
             Grow.
@@ -33,7 +33,7 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button 
             onClick={() => scrollToSection('products')}
-            className="bg-gradient-to-r from-gray-700 to-gray-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+            className="bg-gradient-to-r from-gray-700 to-gray-900 text-gray-300 px-8 py-4 rounded-full text-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
           >
             <span>Explore Products</span>
             <ArrowRight className="h-5 w-5" />
@@ -41,7 +41,7 @@ const Hero = () => {
           
           <button 
             onClick={() => scrollToSection('digital')}
-            className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105"
+            className="border-2 border-white text-gray-300 px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105"
           >
             Digital Resources
           </button>

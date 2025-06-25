@@ -38,12 +38,12 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-gradient-to-br from-white/80 to-gray-100/90 backdrop-blur-sm rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h3>
+          <div className="bg-black rounded-2xl p-8 text-gray-300">
+            <h3 className="text-2xl font-bold text-gray-300 mb-6">Send us a message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-sm font-semibold text-gray-300 mb-2">
                     Full Name
                   </label>
                   <input
@@ -58,7 +58,7 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-2">
                     Email Address
                   </label>
                   <input
@@ -75,7 +75,7 @@ const Contact = () => {
               </div>
               
               <div>
-                <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="subject" className="block text-sm font-semibold text-gray-300 mb-2">
                   Subject
                 </label>
                 <select
@@ -97,7 +97,7 @@ const Contact = () => {
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="message" className="block text-sm font-semibold text-gray-300 mb-2">
                   Message
                 </label>
                 <textarea
@@ -114,7 +114,7 @@ const Contact = () => {
               
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-gray-700 to-gray-900 text-white py-4 px-6 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+                className="w-full bg-gradient-to-r from-gray-700 to-gray-900 text-gray-300 py-4 px-6 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
               >
                 <Send className="h-5 w-5" />
                 <span>Send Message</span>
@@ -125,8 +125,8 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Let's connect</h3>
-              <p className="text-gray-600 mb-8 leading-relaxed">
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">Let's connect</h3>
+              <p className="text-gray-800 mb-8 leading-relaxed">
                 Whether you have questions about our products, want to join our community, or are interested 
                 in partnerships, we're here to help you succeed on your journey to financial freedom.
               </p>
@@ -134,33 +134,33 @@ const Contact = () => {
 
             {/* Contact Methods */}
             <div className="space-y-6">
-              <div className="flex items-center space-x-4 p-4 bg-gray-50/80 rounded-lg hover:bg-gray-100/90 backdrop-blur-sm transition-colors">
+              <div className="flex items-center space-x-4 p-4 bg-black rounded-lg hover:bg-gray-900 transition-colors">
                 <div className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full">
-                  <Mail className="h-6 w-6 text-white" />
+                  <Mail className="h-6 w-6 text-gray-300" />
                 </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-900">Email Us</h4>
-                  <p className="text-gray-600">hello@triaffluent.xyz</p>
+                <div className='text-white'>
+                  <h4 className="text-lg font-semibold">Email Us</h4>
+                  <p className="">hello@triaffluent.xyz</p>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4 p-4 bg-gray-50/80 rounded-lg hover:bg-gray-100/90 backdrop-blur-sm transition-colors">
+              <div className="flex items-center space-x-4 p-4 bg-black rounded-lg hover:bg-gray-900 transition-colors">
                 <div className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full">
-                  <Phone className="h-6 w-6 text-white" />
+                  <Phone className="h-6 w-6 text-gray-300" />
                 </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-900">Call Us</h4>
-                  <p className="text-gray-600">+1 (555) 123-WEALTH</p>
+                <div className='text-white'>
+                  <h4 className="text-lg font-semibold">Call Us</h4>
+                  <p className="">+1 (555) 123-WEALTH</p>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4 p-4 bg-gray-50/80 rounded-lg hover:bg-gray-100/90 backdrop-blur-sm transition-colors">
+              <div className="flex items-center space-x-4 p-4 bg-black rounded-lg hover:bg-gray-900 transition-colors">
                 <div className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full">
-                  <MapPin className="h-6 w-6 text-white" />
+                  <MapPin className="h-6 w-6 text-gray-300" />
                 </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-900">Location</h4>
-                  <p className="text-gray-600">Global Community</p>
+                <div className='text-white'>
+                  <h4 className="text-lg font-semibold">Location</h4>
+                  <p className="">Global Community</p>
                 </div>
               </div>
             </div>
@@ -171,19 +171,19 @@ const Contact = () => {
               <div className="flex space-x-4">
                 <a 
                   href="#" 
-                  className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full text-white hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-110"
+                  className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full text-gray-300 hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-110"
                 >
                   <Instagram className="h-6 w-6" />
                 </a>
                 <a 
                   href="#" 
-                  className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full text-white hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-110"
+                  className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full text-gray-300 hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-110"
                 >
                   <Twitter className="h-6 w-6" />
                 </a>
                 <a 
                   href="#" 
-                  className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full text-white hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-110"
+                  className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full text-gray-300 hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-110"
                 >
                   <Linkedin className="h-6 w-6" />
                 </a>
@@ -191,12 +191,12 @@ const Contact = () => {
             </div>
 
             {/* Affiliate Program CTA */}
-            <div className="bg-gradient-to-r from-gray-900 to-gray-700 rounded-xl p-6 text-white">
+            <div className="bg-black rounded-xl p-6 text-gray-300">
               <h4 className="text-xl font-bold mb-3">Become an Affiliate</h4>
               <p className="text-gray-300 mb-4">
                 Join our affiliate program and earn commissions by sharing products you believe in.
               </p>
-              <button className="bg-gradient-to-r from-gray-700 to-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
+              <button className="bg-gradient-to-r from-gray-700 to-gray-900 text-gray-300 px-6 py-3 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
                 Learn More
               </button>
             </div>

@@ -6,33 +6,37 @@ const WealthResources = () => {
       name: 'Robinhood',
       description: 'Commission-free investing for stocks, ETFs, and crypto',
       category: 'Brokerage',
-      icon: <TrendingUp className="h-6 w-6" />,
+      icon: <TrendingUp className="h-6 w-6" />, 
       color: 'from-green-400 to-green-600',
-      features: ['$0 Commissions', 'Fractional Shares', 'Crypto Trading']
+      features: ['$0 Commissions', 'Fractional Shares', 'Crypto Trading'],
+      url: 'https://robinhood.com/'
     },
     {
-      name: 'Webull',
-      description: 'Advanced trading platform with comprehensive research tools',
-      category: 'Trading',
-      icon: <PieChart className="h-6 w-6" />,
+      name: 'Swan Bitcoin',
+      description: 'Bitcoin investment platform focused on recurring purchases and wealth building',
+      category: 'Bitcoin',
+      icon: <PieChart className="h-6 w-6" />, 
       color: 'from-blue-400 to-blue-600',
-      features: ['Advanced Charts', 'Pre/After Market', 'Paper Trading']
+      features: ['Recurring Buys', 'Bitcoin Education', 'Wealth Building'],
+      url: 'https://www.swanbitcoin.com/'
     },
     {
       name: 'M1 Finance',
       description: 'Automated investing with portfolio management features',
       category: 'Robo-Advisor',
-      icon: <Target className="h-6 w-6" />,
+      icon: <Target className="h-6 w-6" />, 
       color: 'from-purple-400 to-purple-600',
-      features: ['Auto-Investing', 'Portfolio Pies', 'Low Minimums']
+      features: ['Auto-Investing', 'Portfolio Pies', 'Low Minimums'],
+      url: 'https://m1.com/'
     },
     {
       name: 'Coinbase',
       description: 'Leading cryptocurrency exchange and wallet platform',
       category: 'Cryptocurrency',
-      icon: <DollarSign className="h-6 w-6" />,
+      icon: <DollarSign className="h-6 w-6" />, 
       color: 'from-orange-400 to-orange-600',
-      features: ['Secure Storage', '100+ Coins', 'DeFi Access']
+      features: ['Secure Storage', '100+ Coins', 'DeFi Access'],
+      url: 'https://www.coinbase.com/'
     }
   ];
 
@@ -75,7 +79,7 @@ const WealthResources = () => {
                 <div className={`h-2 bg-gradient-to-r ${platform.color}`}></div>
                 <div className="p-6">
                   <div className="flex items-center space-x-3 mb-4">
-                    <div className={`p-2 rounded-lg bg-gradient-to-r ${platform.color} text-white`}>
+                    <div className={`p-2 rounded-lg bg-gradient-to-r ${platform.color} text-gray-300`}>
                       {platform.icon}
                     </div>
                     <div>
@@ -95,10 +99,10 @@ const WealthResources = () => {
                     ))}
                   </div>
                   
-                  <button className={`w-full bg-gradient-to-r ${platform.color} text-white py-2 px-4 rounded-lg font-semibold text-sm hover:opacity-90 transition-all duration-300 flex items-center justify-center space-x-2 group-hover:scale-105`}>
+                  <a href={platform.url} target="_blank" rel="noopener noreferrer" className={`w-full bg-gradient-to-r ${platform.color} text-gray-300 py-2 px-4 rounded-lg font-semibold text-sm hover:opacity-90 transition-all duration-300 flex items-center justify-center space-x-2 group-hover:scale-105`}>
                     <span>Start Investing</span>
                     <ExternalLink className="h-4 w-4" />
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
@@ -110,13 +114,13 @@ const WealthResources = () => {
           <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Financial Planning Tools</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {tools.map((tool, index) => (
-              <div key={index} className="group text-center p-6 rounded-xl bg-gray-50/80 hover:bg-gray-100/90 backdrop-blur-sm transition-all duration-300 transform hover:scale-105">
+              <div key={index} className="group text-center text-gray-300 p-6 rounded-xl bg-black hover:bg-gray-900 transition-all duration-300 transform hover:scale-105">
                 <div className="flex justify-center mb-4">
                   {tool.icon}
                 </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">{tool.title}</h4>
-                <p className="text-gray-600 text-sm mb-4">{tool.description}</p>
-                <button className="text-gray-900 font-semibold hover:text-gray-700 transition-colors">
+                <h4 className="text-lg text-gray-300 font-semibold text-gray-300 mb-2">{tool.title}</h4>
+                <p className="text-gray-300 text-sm mb-4">{tool.description}</p>
+                <button className="text-gray-300 font-semibold hover:text-gray-700 transition-colors">
                   Use Tool →
                 </button>
               </div>
@@ -125,10 +129,10 @@ const WealthResources = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <div className="bg-gradient-to-r from-gray-700 to-gray-900 rounded-2xl p-8 text-white">
+          <div className="bg-black rounded-2xl p-8 text-gray-300">
             <h3 className="text-2xl font-bold mb-4">Ready to Start Your Wealth Journey?</h3>
-            <p className="mb-6 text-white/80">Join thousands of successful investors who started with our recommendations</p>
-            <button className="bg-gray-300 text-gray-900 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-400 transition-all duration-300 transform hover:scale-105">
+            <p className="mb-6 text-gray-300/80">Join thousands of successful investors who started with our recommendations</p>
+            <button className="bg-black text-gray-300 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105">
               Get Started Today
             </button>
           </div>

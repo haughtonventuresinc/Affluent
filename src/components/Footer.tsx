@@ -40,7 +40,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-black text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Main footer content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
@@ -56,25 +56,25 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a 
                 href="#" 
-                className="bg-gray-800 p-3 rounded-full hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700 hover:text-white transition-all duration-300 transform hover:scale-110"
+                className="bg-gray-800 p-3 rounded-full hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700 hover:text-gray-300 transition-all duration-300 transform hover:scale-110"
               >
                 <Instagram className="h-5 w-5" />
               </a>
               <a 
                 href="#" 
-                className="bg-gray-800 p-3 rounded-full hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700 hover:text-white transition-all duration-300 transform hover:scale-110"
+                className="bg-gray-800 p-3 rounded-full hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700 hover:text-gray-300 transition-all duration-300 transform hover:scale-110"
               >
                 <Twitter className="h-5 w-5" />
               </a>
               <a 
                 href="#" 
-                className="bg-gray-800 p-3 rounded-full hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700 hover:text-white transition-all duration-300 transform hover:scale-110"
+                className="bg-gray-800 p-3 rounded-full hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700 hover:text-gray-300 transition-all duration-300 transform hover:scale-110"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a 
                 href="#" 
-                className="bg-gray-800 p-3 rounded-full hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700 hover:text-white transition-all duration-300 transform hover:scale-110"
+                className="bg-gray-800 p-3 rounded-full hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700 hover:text-gray-300 transition-all duration-300 transform hover:scale-110"
               >
                 <Mail className="h-5 w-5" />
               </a>
@@ -134,11 +134,11 @@ const Footer = () => {
         </div>
 
         {/* Newsletter signup */}
-        <div className="bg-gradient-to-r from-gray-800 to-gray-700 rounded-2xl p-8 mb-12">
+        <div className="bg-white rounded-2xl p-8 mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-            <div>
+            <div className='text-gray-800'>
               <h3 className="text-2xl font-bold mb-2">Stay Updated</h3>
-              <p className="text-gray-300">
+              <p className="">
                 Get the latest insights on wealth building, business strategies, and exclusive offers.
               </p>
             </div>
@@ -146,9 +146,9 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                className="flex-1 px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               />
-              <button className="bg-gradient-to-r from-gray-700 to-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105 whitespace-nowrap">
+              <button className="bg-gradient-to-r from-gray-700 to-gray-900 text-gray-300 px-6 py-3 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105 whitespace-nowrap">
                 Subscribe
               </button>
             </div>
@@ -176,7 +176,7 @@ const Footer = () => {
               </p>
               <button 
                 onClick={scrollToTop}
-                className="bg-gray-800 p-2 rounded-full hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700 hover:text-white transition-all duration-300 transform hover:scale-110"
+                className="bg-gray-800 p-2 rounded-full hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-700 hover:text-gray-300 transition-all duration-300 transform hover:scale-110"
               >
                 <ArrowUp className="h-4 w-4" />
               </button>

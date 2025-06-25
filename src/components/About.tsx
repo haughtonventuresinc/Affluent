@@ -32,13 +32,13 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section id="about" className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-300 mb-6">
             About Affluent
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             We're building more than a brand – we're cultivating a movement of ambitious individuals 
             committed to financial literacy, business excellence, and continuous personal development.
           </p>
@@ -46,7 +46,7 @@ const About = () => {
 
         {/* Mission Statement */}
         <div className="mb-16">
-          <div className="bg-gradient-to-r from-gray-900 to-gray-700 rounded-2xl p-8 md:p-12 text-white text-center">
+          <div className="bg-black rounded-2xl p-8 md:p-12 text-gray-300 text-center">
             <h3 className="text-3xl font-bold mb-6">Our Mission</h3>
             <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
               To democratize access to wealth-building knowledge and create a community where 
@@ -58,11 +58,11 @@ const About = () => {
 
         {/* Core Values */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-gray-900 mb-12 text-center">Our Core Values</h3>
+          <h3 className="text-3xl font-bold text-gray-300 mb-12 text-center">Our Core Values</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <div key={index} className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center">
-                <div className="bg-gradient-to-r from-gray-700 to-gray-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-white">
+                <div className="bg-gradient-to-r from-gray-700 to-gray-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-300">
                   {value.icon}
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h4>
