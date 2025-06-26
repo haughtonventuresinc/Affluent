@@ -89,7 +89,7 @@ const Footer = () => {
                 <li key={index}>
                   <button 
                     onClick={link.action}
-                    className="text-gray-300 hover:text-gray-400 transition-colors cursor-pointer"
+                    className="text-gray-300 hover:text-white transition-colors cursor-pointer"
                   >
                     {link.name}
                   </button>
@@ -106,7 +106,7 @@ const Footer = () => {
                 <li key={index}>
                   <button 
                     onClick={link.action}
-                    className="text-gray-300 hover:text-gray-400 transition-colors cursor-pointer"
+                    className="text-gray-300 hover:text-white transition-colors cursor-pointer"
                   >
                     {link.name}
                   </button>
@@ -123,7 +123,7 @@ const Footer = () => {
                 <li key={index}>
                   <button 
                     onClick={link.action}
-                    className="text-gray-300 hover:text-gray-400 transition-colors cursor-pointer"
+                    className="text-gray-300 hover:text-white transition-colors cursor-pointer"
                   >
                     {link.name}
                   </button>
@@ -148,7 +148,7 @@ const Footer = () => {
                 placeholder="Enter your email address"
                 className="flex-1 px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               />
-              <button className="bg-gradient-to-r from-gray-700 to-gray-900 text-gray-300 px-6 py-3 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105 whitespace-nowrap">
+              <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105 whitespace-nowrap">
                 Subscribe
               </button>
             </div>
@@ -163,7 +163,7 @@ const Footer = () => {
                 <button 
                   key={index}
                   onClick={link.action}
-                  className="text-gray-400 hover:text-gray-300 transition-colors text-sm"
+                  className="text-white hover:text-gray-300 transition-colors text-sm"
                 >
                   {link.name}
                 </button>
@@ -171,7 +171,7 @@ const Footer = () => {
             </div>
             
             <div className="flex items-center space-x-4">
-              <p className="text-gray-400 text-sm">
+              <p className="text-white text-sm">
                 © 2024 Affluent. All rights reserved.
               </p>
               <button 

@@ -114,7 +114,7 @@ const Contact = () => {
               
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-gray-700 to-gray-900 text-gray-300 py-4 px-6 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+                className="w-full bg-white text-black py-4 px-6 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
               >
                 <Send className="h-5 w-5" />
                 <span>Send Message</span>
@@ -144,15 +144,6 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4 p-4 bg-black rounded-lg hover:bg-gray-900 transition-colors">
-                <div className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full">
-                  <Phone className="h-6 w-6 text-gray-300" />
-                </div>
-                <div className='text-white'>
-                  <h4 className="text-lg font-semibold">Call Us</h4>
-                  <p className="">+1 (555) 123-WEALTH</p>
-                </div>
-              </div>
 
               <div className="flex items-center space-x-4 p-4 bg-black rounded-lg hover:bg-gray-900 transition-colors">
                 <div className="bg-gradient-to-r from-gray-700 to-gray-900 p-3 rounded-full">
@@ -196,7 +187,7 @@ const Contact = () => {
               <p className="text-gray-300 mb-4">
                 Join our affiliate program and earn commissions by sharing products you believe in.
               </p>
-              <button className="bg-gradient-to-r from-gray-700 to-gray-900 text-gray-300 px-6 py-3 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
+              <button className="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
                 Learn More
               </button>
             </div>

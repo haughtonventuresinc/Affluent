@@ -1,4 +1,5 @@
 import { ShoppingBag, Star } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const FeaturedProducts = () => {
   const products = [
@@ -27,6 +28,8 @@ const FeaturedProducts = () => {
       badge: 'New Drop'
     }
   ];
+
+  const navigate = useNavigate();
 
   return (
     <section id="products" className="py-20 bg-gradient-to-r from-gray-100 to-gray-200">
@@ -65,7 +68,10 @@ const FeaturedProducts = () => {
                 
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-gray-900">{product.price}</span>
-                  <button className="bg-black text-gray-300 px-6 py-3 rounded-full font-semibold hover:from-gray-800 hover:to-gray-600 transition-all duration-300 flex items-center space-x-2 transform hover:scale-105">
+                  <button 
+                    className="bg-black text-gray-300 px-6 py-3 rounded-full font-semibold hover:from-gray-800 hover:to-gray-600 transition-all duration-300 flex items-center space-x-2 transform hover:scale-105"
+                    onClick={() => navigate('/checkout', { state: { product } })}
+                  >
                     <ShoppingBag className="h-4 w-4" />
                     <span>Buy Now</span>
                   </button>
@@ -75,11 +81,6 @@ const FeaturedProducts = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <button className="bg-gradient-to-r from-gray-700 to-gray-900 text-gray-300 px-8 py-4 rounded-full text-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
-            View All Products
-          </button>
-        </div>
       </div>
     </section>
   );

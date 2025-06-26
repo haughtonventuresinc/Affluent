@@ -73,7 +73,7 @@ const BookClub = () => {
             </h3>
             <div className="space-y-6">
               {featuredBooks.map((book, index) => (
-                <div key={index} className="group bg-black rounded-xl p-6 hover:bg-gray-900 transition-all duration-300 transform hover:scale-105 text-gray-300">
+                <div key={index} className="group bg-gray-300 rounded-xl p-6 hover:bg-gray-400 transition-all duration-300 transform hover:scale-105 text-gray-900">
                   <div className="flex space-x-4">
                     <img 
                       src={book.image} 
@@ -83,28 +83,28 @@ const BookClub = () => {
                     <div className="flex-1">
                       <div className="flex items-start justify-between mb-2">
                         <div>
-                          <h4 className="text-lg font-semibold text-gray-300">{book.title}</h4>
-                          <p className="text-gray-300">by {book.author}</p>
+                          <h4 className="text-lg font-semibold text-gray-900">{book.title}</h4>
+                          <p className="text-gray-800">by {book.author}</p>
                         </div>
-                        <span className="bg-gradient-to-r from-gray-700 to-gray-900 text-gray-300 px-2 py-1 rounded-full text-xs font-semibold">
+                        <span className="bg-gray-900 text-white px-2 py-1 rounded-full text-xs font-semibold">
                           {book.category}
                         </span>
                       </div>
                       
-                      <p className="text-gray-300 text-sm mb-3 leading-relaxed">{book.description}</p>
+                      <p className="text-gray-800 text-sm mb-3 leading-relaxed">{book.description}</p>
                       
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4">
                           <div className="flex items-center space-x-1">
-                            <Star className="h-4 w-4 text-gray-300 fill-current" />
-                            <span className="text-sm font-semibold text-gray-300">{book.rating}</span>
+                            <Star className="h-4 w-4 text-gray-600 fill-current" />
+                            <span className="text-sm font-semibold text-gray-900">{book.rating}</span>
                           </div>
                           <div className="flex items-center space-x-1">
-                            <Users className="h-4 w-4 text-gray-300" />
-                            <span className="text-sm text-gray-300">{book.members.toLocaleString()}</span>
+                            <Users className="h-4 w-4 text-gray-600" />
+                            <span className="text-sm text-gray-800">{book.members.toLocaleString()}</span>
                           </div>
                         </div>
-                        <button className="text-gray-300 font-semibold text-sm hover:text-gray-300 transition-colors">
+                        <button className="text-gray-700 font-semibold text-sm hover:text-blue-900 transition-colors">
                           Join Discussion →
                         </button>
                       </div>
@@ -123,18 +123,18 @@ const BookClub = () => {
             </h3>
             <div className="space-y-4">
               {upcomingEvents.map((event, index) => (
-                <div key={index} className="bg-black rounded-xl p-6 hover:bg-gray-900 transition-all duration-300 text-gray-300">
+                <div key={index} className="bg-gray-300 rounded-xl p-6 hover:bg-gray-400 transition-all duration-300 text-gray-900">
                   <div className="flex items-center space-x-4">
-                    <div className="bg-gradient-to-r from-gray-700 to-gray-900 text-gray-300 rounded-lg p-3 text-center min-w-[60px]">
+                    <div className="bg-gray-900 text-white rounded-lg p-3 text-center min-w-[60px]">
                       <div className="text-lg font-bold">{event.date.split(' ')[1]}</div>
                       <div className="text-xs">{event.date.split(' ')[0]}</div>
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-semibold text-gray-300 mb-1">{event.title}</h4>
-                      <p className="text-gray-300 mb-1">{event.book}</p>
-                      <p className="text-sm text-gray-300">{event.time}</p>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-1">{event.title}</h4>
+                      <p className="text-gray-800 mb-1">{event.book}</p>
+                      <p className="text-sm text-gray-800">{event.time}</p>
                     </div>
-                    <button className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-800 transition-all duration-300 transform hover:scale-105">
+                    <button className="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105">
                       RSVP
                     </button>
                   </div>
@@ -142,17 +142,17 @@ const BookClub = () => {
               ))}
             </div>
 
-            <div className="mt-8 bg-black rounded-xl p-6 text-gray-300">
-              <h4 className="text-xl font-bold mb-3">Join the Book Club</h4>
-              <p className="text-gray-300 mb-4">
+            <div className="mt-8 bg-gray-300 rounded-xl p-6 text-gray-900">
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Join the Book Club</h4>
+              <p className="text-gray-800 mb-4">
                 Get access to exclusive discussions, author interviews, and implementation workshops.
               </p>
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-2xl font-bold text-gray-400">$19</span>
-                  <span className="text-gray-300">/month</span>
+                  <span className="text-2xl font-bold text-gray-900">$19</span>
+                  <span className="text-gray-800">/month</span>
                 </div>
-                <button className="bg-gradient-to-r from-gray-700 to-gray-900 text-gray-300 px-6 py-3 rounded-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
+                <button className="bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-all duration-300 transform hover:scale-105">
                   Join Now
                 </button>
               </div>
@@ -161,29 +161,29 @@ const BookClub = () => {
         </div>
 
         {/* Book Club Benefits */}
-        <div className="bg-black rounded-2xl p-8 text-gray-300">
-          <h3 className="text-2xl font-bold text-gray-300 mb-6 text-center">Book Club Benefits</h3>
+        <div className="bg-gray-300 rounded-2xl p-8 text-gray-900">
+          <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Book Club Benefits</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="bg-gradient-to-r from-gray-700 to-gray-900 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="h-6 w-6 text-gray-300" />
+              <div className="bg-gray-700 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BookOpen className="h-6 w-6 text-white" />
               </div>
-              <h4 className="text-lg font-semibold text-gray-300 mb-2">Curated Reading List</h4>
-              <p className="text-gray-300 text-sm">Carefully selected books that accelerate your growth and success.</p>
+              <h4 className="text-lg font-semibold text-gray-900 mb-2">Curated Reading List</h4>
+              <p className="text-gray-800 text-sm">Carefully selected books that accelerate your growth and success.</p>
             </div>
             <div className="text-center">
-              <div className="bg-gradient-to-r from-gray-700 to-gray-900 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-6 w-6 text-gray-300" />
+              <div className="bg-gray-700 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="h-6 w-6 text-white" />
               </div>
-              <h4 className="text-lg font-semibold text-gray-300 mb-2">Community Discussions</h4>
-              <p className="text-gray-300 text-sm">Engage with like-minded individuals and share insights.</p>
+              <h4 className="text-lg font-semibold text-gray-900 mb-2">Community Discussions</h4>
+              <p className="text-gray-800 text-sm">Engage with like-minded individuals and share insights.</p>
             </div>
             <div className="text-center">
-              <div className="bg-gradient-to-r from-gray-700 to-gray-900 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Star className="h-6 w-6 text-gray-300" />
+              <div className="bg-gray-700 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Star className="h-6 w-6 text-white" />
               </div>
-              <h4 className="text-lg font-semibold text-gray-300 mb-2">Exclusive Content</h4>
-              <p className="text-gray-300 text-sm">Access to author interviews and bonus materials.</p>
+              <h4 className="text-lg font-semibold text-gray-900 mb-2">Exclusive Content</h4>
+              <p className="text-gray-800 text-sm">Access to author interviews and bonus materials.</p>
             </div>
           </div>
         </div>

@@ -109,18 +109,19 @@ const WealthResources = () => {
           </div>
         </div>
 
+        
         {/* Financial Tools */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Financial Planning Tools</h3>
+        <div className="bg-gray-100 rounded-2xl shadow-lg p-8">
+          <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">Financial Planning Tools</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {tools.map((tool, index) => (
-              <div key={index} className="group text-center text-gray-300 p-6 rounded-xl bg-black hover:bg-gray-900 transition-all duration-300 transform hover:scale-105">
+              <div key={index} className="group text-center text-gray-800 p-6 rounded-xl bg-white hover:bg-gray-200 transition-all duration-300 transform hover:scale-105">
                 <div className="flex justify-center mb-4">
                   {tool.icon}
                 </div>
-                <h4 className="text-lg text-gray-300 font-semibold text-gray-300 mb-2">{tool.title}</h4>
-                <p className="text-gray-300 text-sm mb-4">{tool.description}</p>
-                <button className="text-gray-300 font-semibold hover:text-gray-700 transition-colors">
+                <h4 className="text-lg text-gray-800 font-semibold mb-2">{tool.title}</h4>
+                <p className="text-gray-700 text-sm mb-4">{tool.description}</p>
+                <button className="text-gray-800 font-semibold hover:text-black transition-colors">
                   Use Tool →
                 </button>
               </div>
@@ -129,10 +130,10 @@ const WealthResources = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <div className="bg-black rounded-2xl p-8 text-gray-300">
-            <h3 className="text-2xl font-bold mb-4">Ready to Start Your Wealth Journey?</h3>
-            <p className="mb-6 text-gray-300/80">Join thousands of successful investors who started with our recommendations</p>
-            <button className="bg-black text-gray-300 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105">
+          <div className="bg-gray-200 rounded-2xl p-8 text-gray-800">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Start Your Wealth Journey?</h3>
+            <p className="mb-6 text-gray-700">Join thousands of successful investors who started with our recommendations</p>
+            <button className="bg-gray-800 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105">
               Get Started Today
             </button>
           </div>

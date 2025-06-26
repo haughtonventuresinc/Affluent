@@ -60,7 +60,7 @@ const DigitalGoods = () => {
                   {item.icon}
                 </div>
                 <div className="absolute top-4 right-4">
-                  <span className="bg-gradient-to-r from-gray-700 to-gray-900 text-gray-300 px-3 py-1 rounded-full text-sm font-semibold">
+                  <span className="bg-black text-white px-3 py-1 rounded-full text-sm font-semibold">
                     {item.type}
                   </span>
                 </div>
@@ -97,10 +97,10 @@ const DigitalGoods = () => {
             <p className="text-gray-300 mb-6">Get unlimited access to all current and future digital resources</p>
             <div className="flex items-center justify-center space-x-4 mb-6">
               <span className="text-2xl text-gray-300 line-through">$499</span>
-              <span className="text-4xl font-bold text-gray-400">$297</span>
+              <span className="text-4xl font-bold text-white">$297</span>
               <span className="bg-red-500 text-gray-300 px-3 py-1 rounded-full text-sm">40% OFF</span>
             </div>
-            <button className="bg-gradient-to-r from-gray-700 to-gray-900 text-gray-300 px-8 py-4 rounded-full text-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
+            <button className="bg-black text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
               Unlock Everything
             </button>
           </div>
