@@ -1,4 +1,5 @@
 import { BookOpen, Users, Calendar, Star } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const BookClub = () => {
   const featuredBooks = [
@@ -51,6 +52,8 @@ const BookClub = () => {
       time: '8:00 PM EST'
     }
   ];
+
+  const navigate = useNavigate();
 
   return (
     <section id="bookclub" className="py-20 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200">
@@ -152,7 +155,19 @@ const BookClub = () => {
                   <span className="text-2xl font-bold text-gray-900">$19</span>
                   <span className="text-gray-800">/month</span>
                 </div>
-                <button className="bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-all duration-300 transform hover:scale-105">
+                <button
+                  className="bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-all duration-300 transform hover:scale-105"
+                  onClick={() => navigate('/checkout', {
+                    state: {
+                      product: {
+                        name: 'Book Club Membership',
+                        price: '$19',
+                        description: 'Get access to exclusive discussions, author interviews, and implementation workshops.',
+                        image: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=800',
+                      }
+                    }
+                  })}
+                >
                   Join Now
                 </button>
               </div>

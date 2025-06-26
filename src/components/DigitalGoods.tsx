@@ -1,4 +1,5 @@
 import { BookOpen, Play, Download, Award } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const DigitalGoods = () => {
   const digitalItems = [
@@ -33,6 +34,8 @@ const DigitalGoods = () => {
       features: ['20+ Templates', 'Business Plan Guide', 'Financial Models', 'Legal Checklists']
     }
   ];
+
+  const navigate = useNavigate();
 
   return (
     <section id="digital" className="py-20 bg-gradient-to-br from-gray-200 to-gray-100">
@@ -82,7 +85,19 @@ const DigitalGoods = () => {
                   ))}
                 </div>
                 
-                <button className="w-full bg-black text-gray-300 py-3 rounded-full font-semibold hover:from-gray-800 hover:to-gray-600 transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105">
+                <button
+                  className="w-full bg-black text-gray-300 py-3 rounded-full font-semibold hover:from-gray-800 hover:to-gray-600 transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105"
+                  onClick={() => navigate('/checkout', {
+                    state: {
+                      product: {
+                        name: item.title,
+                        price: item.price,
+                        description: item.description,
+                        image: item.image,
+                      }
+                    }
+                  })}
+                >
                   <Download className="h-4 w-4" />
                   <span>Get Access</span>
                 </button>
@@ -100,7 +115,19 @@ const DigitalGoods = () => {
               <span className="text-4xl font-bold text-white">$297</span>
               <span className="bg-red-500 text-gray-300 px-3 py-1 rounded-full text-sm">40% OFF</span>
             </div>
-            <button className="bg-black text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105">
+            <button
+              className="bg-black text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-gray-600 hover:to-gray-800 transition-all duration-300 transform hover:scale-105"
+              onClick={() => navigate('/checkout', {
+                state: {
+                  product: {
+                    name: 'All-Access Pass',
+                    price: '$297',
+                    description: 'Unlimited access to all current and future digital resources',
+                    image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
+                  }
+                }
+              })}
+            >
               Unlock Everything
             </button>
           </div>
