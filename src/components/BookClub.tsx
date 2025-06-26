@@ -1,57 +1,8 @@
-import { BookOpen, Users, Calendar, Star } from 'lucide-react';
+import { BookOpen, Users, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const BookClub = () => {
-  const featuredBooks = [
-    {
-      title: 'Rich Dad Poor Dad',
-      author: 'Robert Kiyosaki',
-      image: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=800',
-      description: 'Classic financial education that challenges conventional thinking about money and investing.',
-      rating: 4.8,
-      members: 2847,
-      category: 'Personal Finance'
-    },
-    {
-      title: 'The Lean Startup',
-      author: 'Eric Ries',
-      image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800',
-      description: 'Revolutionary approach to building successful startups through validated learning.',
-      rating: 4.6,
-      members: 1923,
-      category: 'Entrepreneurship'
-    },
-    {
-      title: 'Think and Grow Rich',
-      author: 'Napoleon Hill',
-      image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800',
-      description: 'Timeless principles for achieving wealth and success through mindset transformation.',
-      rating: 4.9,
-      members: 3156,
-      category: 'Success'
-    }
-  ];
-
-  const upcomingEvents = [
-    {
-      date: 'Jan 15',
-      title: 'Monthly Book Discussion',
-      book: 'Atomic Habits',
-      time: '7:00 PM EST'
-    },
-    {
-      date: 'Jan 22',
-      title: 'Author Q&A Session',
-      book: 'The Psychology of Money',
-      time: '6:30 PM EST'
-    },
-    {
-      date: 'Jan 29',
-      title: 'Implementation Workshop',
-      book: 'The 7 Habits of Highly Effective People',
-      time: '8:00 PM EST'
-    }
-  ];
+ 
 
   const navigate = useNavigate();
 
@@ -68,83 +19,9 @@ const BookClub = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          {/* Featured Books */}
-          <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
-              <BookOpen className="h-6 w-6 mr-3 text-gray-500" />
-              Currently Reading
-            </h3>
-            <div className="space-y-6">
-              {featuredBooks.map((book, index) => (
-                <div key={index} className="group bg-gray-300 rounded-xl p-6 hover:bg-gray-400 transition-all duration-300 transform hover:scale-105 text-gray-900">
-                  <div className="flex space-x-4">
-                    <img 
-                      src={book.image} 
-                      alt={book.title}
-                      className="w-16 h-20 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
-                    />
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between mb-2">
-                        <div>
-                          <h4 className="text-lg font-semibold text-gray-900">{book.title}</h4>
-                          <p className="text-gray-800">by {book.author}</p>
-                        </div>
-                        <span className="bg-gray-900 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                          {book.category}
-                        </span>
-                      </div>
-                      
-                      <p className="text-gray-800 text-sm mb-3 leading-relaxed">{book.description}</p>
-                      
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-4">
-                          <div className="flex items-center space-x-1">
-                            <Star className="h-4 w-4 text-gray-600 fill-current" />
-                            <span className="text-sm font-semibold text-gray-900">{book.rating}</span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <Users className="h-4 w-4 text-gray-600" />
-                            <span className="text-sm text-gray-800">{book.members.toLocaleString()}</span>
-                          </div>
-                        </div>
-                        <button className="text-gray-700 font-semibold text-sm hover:text-blue-900 transition-colors">
-                          Join Discussion →
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
 
           {/* Upcoming Events */}
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
-              <Calendar className="h-6 w-6 mr-3 text-blue-500" />
-              Upcoming Events
-            </h3>
-            <div className="space-y-4">
-              {upcomingEvents.map((event, index) => (
-                <div key={index} className="bg-gray-300 rounded-xl p-6 hover:bg-gray-400 transition-all duration-300 text-gray-900">
-                  <div className="flex items-center space-x-4">
-                    <div className="bg-gray-900 text-white rounded-lg p-3 text-center min-w-[60px]">
-                      <div className="text-lg font-bold">{event.date.split(' ')[1]}</div>
-                      <div className="text-xs">{event.date.split(' ')[0]}</div>
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-1">{event.title}</h4>
-                      <p className="text-gray-800 mb-1">{event.book}</p>
-                      <p className="text-sm text-gray-800">{event.time}</p>
-                    </div>
-                    <button className="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-900 transition-all duration-300 transform hover:scale-105">
-                      RSVP
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-
             <div className="mt-8 bg-gray-300 rounded-xl p-6 text-gray-900">
               <h4 className="text-xl font-bold text-gray-900 mb-3">Join the Book Club</h4>
               <p className="text-gray-800 mb-4">

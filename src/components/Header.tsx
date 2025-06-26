@@ -1,9 +1,11 @@
 import  { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,6 +69,12 @@ const Header = () => {
             >
               Contact
             </button>
+            <button
+              onClick={() => navigate('/admin')}
+              className="ml-2 px-4 py-1 border border-blue-400 rounded text-blue-400 hover:bg-blue-400 hover:text-white transition-colors font-semibold"
+            >
+              Admin Login
+            </button>
           </nav>
 
           {/* Mobile menu button */}
@@ -117,6 +125,12 @@ const Header = () => {
                 className="block px-3 py-2 text-white hover:text-gray-300 font-medium"
               >
                 Contact
+              </button>
+              <button
+                onClick={() => { setIsMenuOpen(false); navigate('/admin'); }}
+                className="block px-3 py-2 border border-blue-400 rounded text-blue-400 hover:bg-blue-400 hover:text-white font-semibold mt-2"
+              >
+                Admin Login
               </button>
             </div>
           </div>

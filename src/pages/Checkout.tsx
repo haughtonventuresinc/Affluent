@@ -27,7 +27,7 @@ const Checkout = () => {
   const total = subtotal; // Add tax/shipping if needed
 
   return (
-    <PayPalScriptProvider options={{ clientId: "Ab7xJL4UIXw8UyiAvTbiQaD4CTCeEIQUGMmXIy3lEQKjhDGzYWNOwjUSz1k8uzL_yQD_NeWfOobNfSJV", currency: "USD" }}>
+    <PayPalScriptProvider options={{ clientId: "Aal6JA85Ioe1YDpipoPsytTEfbb88r8lqNsjOHiqutkCjrTNh45mfGd5VYkXAl1GlP9h8JH_6bS9DRBh", currency: "USD" }}>
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 py-4 px-1 sm:py-8 sm:px-2">
         <div className="w-full max-w-md sm:max-w-xl bg-white rounded-2xl shadow-2xl p-4 sm:p-8 md:p-10 border border-gray-100 relative mx-2">
           <button

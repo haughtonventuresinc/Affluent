@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Affluent Classic Cap",
+    "price": "$45",
+    "image": "https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "description": "Premium quality cap with embroidered logo",
+    "badge": "Limited Edition"
+  },
+  {
+    "id": "2",
+    "name": "Executive Black Hat",
+    "price": "$55",
+    "image": "https://images.pexels.com/photos/3731256/pexels-photo-3731256.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "description": "Sophisticated design for the modern entrepreneur",
+    "badge": "Best Seller"
+  },
+  {
+    "id": "3",
+    "name": "Success Mindset Beanie",
+    "price": "$40",
+    "image": "https://images.pexels.com/photos/1124466/pexels-photo-1124466.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "description": "Comfortable beanie for the ambitious minded",
+    "badge": "New Drop"
+  }
+]

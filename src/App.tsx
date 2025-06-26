@@ -1,6 +1,17 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Checkout from './pages/Checkout';
 import Header from './components/Header';
+
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminLogin from "./pages/AdminLogin";
+
+function RequireAuth({ children }: { children: JSX.Element }) {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('affluent_token') : null;
+  if (!token) {
+    return <Navigate to="/admin-login" replace />;
+  }
+  return children;
+}
 import Hero from './components/Hero';
 import FeaturedProducts from './components/FeaturedProducts';
 import DigitalGoods from './components/DigitalGoods';
@@ -32,6 +43,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/admin" element={<RequireAuth><AdminDashboard /></RequireAuth>} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,35 +1,28 @@
 import { ShoppingBag, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const FeaturedProducts = () => {
-  const products = [
-    {
-      id: 1,
-      name: 'Affluent Classic Cap',
-      price: '$45',
-      image: 'https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg?auto=compress&cs=tinysrgb&w=800',
-      description: 'Premium quality cap with embroidered logo',
-      badge: 'Limited Edition'
-    },
-    {
-      id: 2,
-      name: 'Executive Black Hat',
-      price: '$55',
-      image: 'https://images.pexels.com/photos/3731256/pexels-photo-3731256.jpeg?auto=compress&cs=tinysrgb&w=800',
-      description: 'Sophisticated design for the modern entrepreneur',
-      badge: 'Best Seller'
-    },
-    {
-      id: 3,
-      name: 'Success Mindset Beanie',
-      price: '$35',
-      image: 'https://images.pexels.com/photos/1124466/pexels-photo-1124466.jpeg?auto=compress&cs=tinysrgb&w=800',
-      description: 'Comfortable beanie for the ambitious minded',
-      badge: 'New Drop'
-    }
-  ];
+import { useEffect, useState } from 'react';
 
+interface Product {
+  id: string;
+  name: string;
+  price: string;
+  image: string;
+  description: string;
+  badge?: string;
+}
+
+const API_URL = "http://localhost:4000/api/products";
+
+const FeaturedProducts = () => {
+  const [products, setProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch(API_URL)
+      .then(res => res.json())
+      .then((data: Product[]) => setProducts(data));
+  }, []);
 
   return (
     <section id="products" className="py-20 bg-gradient-to-r from-gray-100 to-gray-200">
