@@ -12,7 +12,8 @@ interface Product {
   badge?: string;
 }
 
-const API_URL = "http://localhost:4000/api/products";
+import { BACKEND_URL } from '../config';
+const API_URL = `${BACKEND_URL}/api/products`;
 
 const FeaturedProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);

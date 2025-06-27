@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BACKEND_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
 import { Download, Play, BookOpen, Award } from 'lucide-react';
 
@@ -19,7 +20,7 @@ const DigitalGoods: React.FC = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:4000/api/digitalgoods')
+    fetch(`${BACKEND_URL}/api/digitalgoods`)
       .then(res => res.json())
       .then(setDigitalItems)
       .catch(() => setError('Failed to load digital goods'))
@@ -127,7 +128,7 @@ const AllAccessPassSection: React.FC = () => {
 
   React.useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:4000/api/allaccess')
+    fetch(`${BACKEND_URL}/api/allaccess`)
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch All-Access Pass');
         return res.json();

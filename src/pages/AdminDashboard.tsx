@@ -1,7 +1,8 @@
 import { useEffect, useState, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = "http://localhost:4000/api/products";
+import { BACKEND_URL } from '../config';
+const API_URL = `${BACKEND_URL}/api/products`;
 
 interface Product {
   id: string;
@@ -33,17 +34,17 @@ interface DigitalGood {
 }
 
 function BookClubMainAdmin() {
-  type BookClubData = { id: string; title: string; description: string; price: string; image: string };
-  const [data, setData] = useState<BookClubData>({ id: '', title: 'Join the Book Club', description: 'Get access to exclusive discussions, author interviews, and implementation workshops.', price: '$19', image: '' });
+  type BookClubData = { id: string; title: string; description: string; price: string };
+  const [data, setData] = useState<BookClubData>({ id: '', title: 'Join the Book Club', description: 'Get access to exclusive discussions, author interviews, and implementation workshops.', price: '$19' });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [editing, setEditing] = useState(false);
-  const [form, setForm] = useState<BookClubData>(data);
+  const [form, setForm] = useState<BookClubData>({ id: '', title: '', description: '', price: '' });
   const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:4000/api/bookclub')
+    fetch(`${BACKEND_URL}/api/bookclub`)
       .then(res => res.json())
       .then(items => {
         const main = items && items.length > 0 ? items[0] : { id: '', title: '', description: '', price: '', image: '' };
@@ -66,7 +67,7 @@ function BookClubMainAdmin() {
   };
 
   const handleSave = () => {
-    fetch(`http://localhost:4000/api/bookclub/${data.id}`, {
+    fetch(`${BACKEND_URL}/api/bookclub/${data.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('affluent_token')}` },
       body: JSON.stringify(form),
@@ -96,10 +97,9 @@ function BookClubMainAdmin() {
       <h2 className="text-xl font-bold mb-4 text-center">Book Club Card</h2>
       {editing ? (
         <>
-          <input name="title" value={form.title} onChange={handleChange} placeholder="Title" className="border rounded px-4 py-2 w-full mb-2" />
-          <textarea name="description" value={form.description} onChange={handleChange} placeholder="Description" className="border rounded px-4 py-2 w-full mb-2" />
-          <input name="price" value={form.price} onChange={handleChange} placeholder="Price (e.g. $19)" className="border rounded px-4 py-2 w-full mb-2" />
-          <input name="image" value={form.image} onChange={handleChange} placeholder="Image URL (optional)" className="border rounded px-4 py-2 w-full mb-2" />
+          <input name="title" value={form.title || ''} onChange={handleChange} placeholder="Title" className="border rounded px-4 py-2 w-full mb-2" />
+          <textarea name="description" value={form.description || ''} onChange={handleChange} placeholder="Description" className="border rounded px-4 py-2 w-full mb-2" />
+          <input name="price" value={form.price || ''} onChange={handleChange} placeholder="Price (e.g. $19)" className="border rounded px-4 py-2 w-full mb-2" />
           <div className="flex gap-2 mt-2">
             <button onClick={handleSave} className="bg-green-600 text-white px-6 py-2 rounded font-semibold">Save</button>
             <button onClick={() => { setEditing(false); setForm(data); }} className="bg-gray-400 text-white px-6 py-2 rounded font-semibold">Cancel</button>
@@ -113,7 +113,7 @@ function BookClubMainAdmin() {
             <span className="text-3xl font-bold text-black">{data.price}</span>
             <span className="text-gray-800">/month</span>
           </div>
-          {data.image && <img src={data.image} alt="Book Club" className="h-20 w-20 object-cover rounded mx-auto mb-2" />}
+          
           <button onClick={() => setEditing(true)} className="bg-yellow-500 text-white px-6 py-2 rounded font-semibold mt-2">Edit</button>
         </>
       )}
@@ -138,7 +138,7 @@ function AllAccessPassAdmin() {
 
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:4000/api/allaccess')
+    fetch(`${BACKEND_URL}/api/allaccess`)
       .then(res => res.json())
       .then(d => { setData(d); setForm(d); })
       .catch(() => setError('Failed to fetch All-Access Pass'))
@@ -158,7 +158,7 @@ function AllAccessPassAdmin() {
   };
 
   const handleSave = () => {
-    fetch('http://localhost:4000/api/allaccess', {
+    fetch(`${BACKEND_URL}/api/allaccess`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('affluent_token')}` },
       body: JSON.stringify(form),
@@ -226,7 +226,7 @@ function DigitalGoodsAdminTable() {
 
   const fetchItems = () => {
     setLoading(true);
-    fetch('http://localhost:4000/api/digitalgoods')
+    fetch(`${BACKEND_URL}/api/digitalgoods`)
       .then(res => res.json())
       .then(setItems)
       .catch(() => setError('Failed to fetch digital goods'))
@@ -265,7 +265,7 @@ function DigitalGoodsAdminTable() {
   const cancelEdit = () => setEditing(null);
 
   const saveEdit = (id: string) => {
-    fetch(`http://localhost:4000/api/digitalgoods/${id}`, {
+    fetch(`${BACKEND_URL}/api/digitalgoods/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -291,7 +291,7 @@ function DigitalGoodsAdminTable() {
   };
 
   const addItem = () => {
-    fetch('http://localhost:4000/api/digitalgoods', {
+    fetch(`${BACKEND_URL}/api/digitalgoods`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -315,7 +315,7 @@ function DigitalGoodsAdminTable() {
   };
 
   const deleteItem = (id: string) => {
-    fetch(`http://localhost:4000/api/digitalgoods/${id}`, {
+    fetch(`${BACKEND_URL}/api/digitalgoods/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('affluent_token')}`
@@ -428,6 +428,13 @@ function DigitalGoodsAdminTable() {
 }
 
 export default function AdminDashboard() {
+  // ...existing state hooks
+
+  // Logout handler
+  const handleLogout = () => {
+    localStorage.removeItem('affluent_token');
+    navigate('/admin-login');
+  };
   const [section, setSection] = useState<Section>('products');
   const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
   // Toast auto-dismiss
@@ -553,14 +560,32 @@ export default function AdminDashboard() {
           {toast.message}
         </div>
       )}
-      <div className="max-w-5xl mx-auto bg-white rounded-xl shadow p-2 sm:p-8 flex flex-col sm:flex-row">
+      <div className="relative max-w-5xl mx-auto bg-white rounded-xl shadow p-2 sm:p-8 flex flex-col sm:flex-row">
+        {/* Logout button */}
+        
         {/* Sidebar */}
-        <nav className="sm:w-52 w-full flex sm:flex-col flex-row border-r border-gray-200 mb-4 sm:mb-0">
-          <button onClick={() => setSection('products')} className={`flex-1 sm:flex-none px-4 py-3 text-left sm:text-base text-sm ${section==='products' ? 'bg-green-100 font-bold text-green-800' : 'hover:bg-gray-100'} rounded sm:rounded-none sm:rounded-t-lg`}>Featured Drops</button>
-          <button onClick={() => setSection('digitalgoods')} className={`flex-1 sm:flex-none px-4 py-3 text-left sm:text-base text-sm ${section==='digitalgoods' ? 'bg-green-100 font-bold text-green-800' : 'hover:bg-gray-100'} rounded sm:rounded-none`}>Digital Knowledge Hub</button>
-          <button onClick={() => setSection('bookclub')} className={`flex-1 sm:flex-none px-4 py-3 text-left sm:text-base text-sm ${section==='bookclub' ? 'bg-green-100 font-bold text-green-800' : 'hover:bg-gray-100'} rounded sm:rounded-none sm:rounded-b-lg`}>Affluent Book Club</button>
-          <button onClick={() => navigate('/')} className="sm:mt-8 ml-auto border border-gray-400 rounded px-4 py-2 text-gray-700 hover:bg-gray-100 font-semibold">Logout</button>
-        </nav>
+        <nav className="sm:w-52 w-full flex sm:flex-col flex-row border-r border-gray-200 mb-4 sm:mb-0 items-start gap-2 sm:gap-0">
+  <div className="flex flex-1 sm:flex-col flex-row w-full gap-2 sm:gap-0">
+    <button onClick={() => setSection('products')} className={`flex-1 sm:flex-none px-4 py-3 text-left sm:text-base text-sm ${section==='products' ? 'bg-green-100 font-bold text-green-800' : 'hover:bg-gray-100'} rounded sm:rounded-none sm:rounded-t-lg`}>Featured Drops</button>
+    <button onClick={() => setSection('digitalgoods')} className={`flex-1 sm:flex-none px-4 py-3 text-left sm:text-base text-sm ${section==='digitalgoods' ? 'bg-green-100 font-bold text-green-800' : 'hover:bg-gray-100'} rounded sm:rounded-none`}>Digital Knowledge Hub</button>
+    <button onClick={() => setSection('bookclub')} className={`flex-1 sm:flex-none px-4 py-3 text-left sm:text-base text-sm ${section==='bookclub' ? 'bg-green-100 font-bold text-green-800' : 'hover:bg-gray-100'} rounded sm:rounded-none sm:rounded-b-lg`}>Affluent Book Club</button>
+  </div>
+  <div className="hidden sm:block border-t border-gray-200 my-4 w-full"></div>
+  <div className="flex flex-row sm:flex-col w-full gap-2 sm:gap-2 justify-end sm:justify-start mt-2 sm:mt-4">
+    <button
+      onClick={() => navigate('/')} 
+      className="bg-blue-600 text-white px-4 py-2 rounded font-semibold hover:bg-blue-700 transition w-full sm:w-auto"
+    >
+      Go Home
+    </button>
+    <button
+      onClick={handleLogout}
+      className="bg-red-600 text-white px-4 py-2 rounded font-semibold hover:bg-red-700 transition w-full sm:w-auto"
+    >
+      Logout
+    </button>
+  </div>
+</nav>
         {/* Main Section */}
         <div className="flex-1 sm:pl-8 mt-4 sm:mt-0">
           {section === 'products' && (
@@ -691,11 +716,11 @@ export default function AdminDashboard() {
             </div>
           )}
           {section === 'digitalgoods' && (
-            <>
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Digital Knowledge Hub</h2>
               <DigitalGoodsAdminTable />
               <AllAccessPassAdmin />
-              <BookClubMainAdmin />
-            </>
+            </div>
           )}
           {section === 'bookclub' && (
             <BookClubMainAdmin />

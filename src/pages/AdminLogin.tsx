@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Eye, EyeOff } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
 
-const API_URL = "http://localhost:4000/api/login";
+import { BACKEND_URL } from '../config';
+const API_URL = `${BACKEND_URL}/api/login`;
 
 export default function AdminLogin() {
   const [username, setUsername] = useState("");
@@ -30,9 +31,15 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-gray-100 to-gray-200">
-      <div className="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Admin Login</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200">
+      <button
+        onClick={() => navigate('/')} 
+        className="absolute top-4 right-4 bg-blue-600 text-white px-4 py-2 rounded font-semibold hover:bg-blue-700 transition"
+      >
+        Go Home
+      </button>
+      <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
+        <h2 className="text-3xl font-bold text-center mb-8">Admin Login</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-gray-700 font-medium mb-1" htmlFor="username">Username</label>

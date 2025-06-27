@@ -1,4 +1,5 @@
 import { BookOpen, Users, Star } from 'lucide-react';
+import { BACKEND_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
 
@@ -10,7 +11,7 @@ const BookClubMainCard: React.FC = () => {
 
   React.useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:4000/api/bookclub')
+    fetch(`${BACKEND_URL}/api/bookclub`)
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch Book Club');
         return res.json();
