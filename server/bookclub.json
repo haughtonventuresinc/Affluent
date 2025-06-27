@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "title": "Book Club",
+    "author": "James Clear",
+    "description": "An easy & proven way to build good habits and break bad ones.",
+    "image": "https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "id": "2",
+    "title": "The Psychology of Money",
+    "author": "Morgan Housel",
+    "description": "Timeless lessons on wealth, greed, and happiness.",
+    "image": "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "id": "3",
+    "title": "Rich Dad Poor Dad",
+    "author": "Robert Kiyosaki",
+    "description": "What the rich teach their kids about money that the poor and middle class do not!",
+    "image": "https://images.pexels.com/photos/267569/pexels-photo-267569.jpeg?auto=compress&cs=tinysrgb&w=800"
+  }
+]

@@ -1,5 +1,57 @@
 import { BookOpen, Users, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
+
+const BookClubMainCard: React.FC = () => {
+  const [data, setData] = React.useState<any>(null);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState('');
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    setLoading(true);
+    fetch('http://localhost:4000/api/bookclub')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch Book Club');
+        return res.json();
+      })
+      .then(items => setData(items && items.length > 0 ? items[0] : null))
+      .catch(() => setError('Failed to load Book Club'))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const title = data?.title?.trim() ? data.title : 'Join the Book Club';
+  const description = data?.description?.trim() ? data.description : 'Get access to exclusive discussions, author interviews, and implementation workshops.';
+  const price = data?.price?.trim() ? data.price : '$19';
+  const image = data?.image;
+
+  return (
+    <div className="mt-8 bg-gray-300 rounded-xl p-6 text-gray-900">
+      <h4 className="text-xl font-bold text-gray-900 mb-3">{title}</h4>
+      <p className="text-gray-800 mb-4">{description}</p>
+      <div className="flex items-center justify-between">
+        <div>
+          <span className="text-2xl font-bold text-gray-900">{price}</span>
+          <span className="text-gray-800">/month</span>
+        </div>
+        <button
+          className="bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-all duration-300 transform hover:scale-105"
+          onClick={() => navigate('/checkout', {
+            state: {
+              product: {
+                name: title,
+                price: price,
+                description: description,
+              }
+            }
+          })}
+        >
+          Join Now
+        </button>
+      </div>
+    </div>
+  );
+};
 
 const BookClub = () => {
  
@@ -18,38 +70,9 @@ const BookClub = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-
-          {/* Upcoming Events */}
-          <div>
-            <div className="mt-8 bg-gray-300 rounded-xl p-6 text-gray-900">
-              <h4 className="text-xl font-bold text-gray-900 mb-3">Join the Book Club</h4>
-              <p className="text-gray-800 mb-4">
-                Get access to exclusive discussions, author interviews, and implementation workshops.
-              </p>
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-2xl font-bold text-gray-900">$19</span>
-                  <span className="text-gray-800">/month</span>
-                </div>
-                <button
-                  className="bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-all duration-300 transform hover:scale-105"
-                  onClick={() => navigate('/checkout', {
-                    state: {
-                      product: {
-                        name: 'Book Club Membership',
-                        price: '$19',
-                        description: 'Get access to exclusive discussions, author interviews, and implementation workshops.',
-                        image: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=800',
-                      }
-                    }
-                  })}
-                >
-                  Join Now
-                </button>
-              </div>
-            </div>
-          </div>
+        <div className="flex justify-center w-full mb-16">
+          {/* Book Club Main Card - Dynamic, editable from admin */}
+          <BookClubMainCard />
         </div>
 
         {/* Book Club Benefits */}
