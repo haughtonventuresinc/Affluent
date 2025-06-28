@@ -3,15 +3,7 @@ import { BACKEND_URL } from '../config';
 import { useNavigate } from 'react-router-dom';
 import { Download, Play, BookOpen, Award } from 'lucide-react';
 
-interface DigitalGood {
-  id: string;
-  title: string;
-  type: string;
-  price: string;
-  description: string;
-  image: string;
-  features?: string[];
-}
+import type { DigitalGood } from '../types/DigitalGood';
 
 const DigitalGoods: React.FC = () => {
   const [digitalItems, setDigitalItems] = useState<any[]>([]);
@@ -89,6 +81,7 @@ const DigitalGoods: React.FC = () => {
                       ))}
                     </div>
                   )}
+
                   <button
                     className="w-full bg-black text-gray-300 py-3 rounded-full font-semibold hover:from-gray-800 hover:to-gray-600 transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105"
                     onClick={() => navigate('/checkout', {
@@ -98,6 +91,7 @@ const DigitalGoods: React.FC = () => {
                           price: item.price,
                           description: item.description,
                           image: item.image,
+                          fileUrl: item.fileUrl,
                         }
                       }
                     })}
@@ -111,8 +105,7 @@ const DigitalGoods: React.FC = () => {
           })}
         </div>
 
-        {/* All-Access Pass Section - Now dynamic */}
-        <AllAccessPassSection />
+
       </div>
     </section>
   );

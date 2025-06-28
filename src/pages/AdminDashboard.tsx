@@ -23,15 +23,6 @@ interface ProductForm {
 
 type Section = 'products' | 'digitalgoods' | 'bookclub';
 
-interface DigitalGood {
-  id: string;
-  title: string;
-  type: string;
-  price: string;
-  description: string;
-  image: string;
-  features?: string[];
-}
 
 function BookClubMainAdmin() {
   type BookClubData = { id: string; title: string; description: string; price: string };
@@ -216,12 +207,18 @@ function AllAccessPassAdmin() {
   );
 }
 
+import type { DigitalGood } from '../types/DigitalGood';
+
 function DigitalGoodsAdminTable() {
   const [items, setItems] = useState<DigitalGood[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [editing, setEditing] = useState<string | null>(null);
-  const [form, setForm] = useState<Omit<DigitalGood, 'id'>>({ title: '', type: '', price: '', description: '', image: '' });
+  const [form, setForm] = useState<Omit<DigitalGood, 'id'> & { fileUrl?: string; file?: File }>(
+    { title: '', type: '', price: '', description: '', image: '', fileUrl: '', file: undefined }
+  );
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   const fetchItems = () => {
@@ -253,6 +250,8 @@ function DigitalGoodsAdminTable() {
         setForm((prev) => ({ ...prev, image: reader.result as string }));
       };
       reader.readAsDataURL(files[0]);
+    } else if (name === 'file' && files && files[0]) {
+      setForm({ ...form, file: files[0] });
     } else {
       setForm({ ...form, [name]: value });
     }
@@ -260,58 +259,105 @@ function DigitalGoodsAdminTable() {
 
   const startEdit = (item: DigitalGood) => {
     setEditing(item.id);
-    setForm({ title: item.title, type: item.type, price: item.price, description: item.description, image: item.image });
+    setForm({ title: item.title, type: item.type, price: item.price, description: item.description, image: item.image, fileUrl: item.fileUrl });
   };
+
   const cancelEdit = () => setEditing(null);
 
-  const saveEdit = (id: string) => {
-    fetch(`${BACKEND_URL}/api/digitalgoods/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('affluent_token')}`
-      },
-      body: JSON.stringify(form),
-    })
-      .then(async res => {
-        if (!res.ok) throw new Error((await res.json()).error || 'Failed to update');
-        return res.json();
-      })
-      .then(() => {
-        setToast({ type: 'success', message: 'Digital good updated!' });
-        setEditing(null);
-        setForm({ title: '', type: '', price: '', description: '', image: '' });
-        fetchItems();
-      })
-      .catch(err => {
-        setToast({ type: 'error', message: err.message || 'Failed to update' });
-        setEditing(null);
-        setForm({ title: '', type: '', price: '', description: '', image: '' });
+  const saveEdit = async (id: string) => {
+    setUploading(true);
+    setUploadError(null);
+    try {
+      let fileUrl = form.fileUrl || '';
+      // If a new file is attached, upload it first
+      if (form.file instanceof File) {
+        const fileData = new FormData();
+        fileData.append('file', form.file);
+        const uploadRes = await fetch(`${BACKEND_URL}/api/digitalgoods/upload`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('affluent_token')}`
+          },
+          body: fileData,
+        });
+        if (!uploadRes.ok) throw new Error('File upload failed');
+        const uploadData = await uploadRes.json();
+        fileUrl = uploadData.fileUrl;
+      }
+      // Now update the digital good with the fileUrl
+      const payload = { ...form, fileUrl };
+      delete payload.file; // Don't send the File object
+      const res = await fetch(`${BACKEND_URL}/api/digitalgoods/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('affluent_token')}`
+        },
+        body: JSON.stringify(payload),
       });
+      if (!res.ok) throw new Error((await res.json()).error || 'Failed to update');
+      setToast({ type: 'success', message: 'Digital good updated!' });
+      setEditing(null);
+      setForm({ title: '', type: '', price: '', description: '', image: '', fileUrl: '', file: undefined });
+      fetchItems();
+    } catch (err: any) {
+      setToast({ type: 'error', message: err.message || 'Failed to update' });
+      setEditing(null);
+      setForm({ title: '', type: '', price: '', description: '', image: '', fileUrl: '', file: undefined });
+      setUploadError(err.message || 'File upload failed');
+    } finally {
+      setUploading(false);
+    }
   };
 
-  const addItem = () => {
-    fetch(`${BACKEND_URL}/api/digitalgoods`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('affluent_token')}`
-      },
-      body: JSON.stringify(form),
-    })
-      .then(async res => {
-        if (!res.ok) throw new Error((await res.json()).error || 'Failed to add');
-        return res.json();
-      })
-      .then(() => {
-        setToast({ type: 'success', message: 'Digital good added!' });
-        setForm({ title: '', type: '', price: '', description: '', image: '' });
-        fetchItems();
-      })
-      .catch(err => {
-        setToast({ type: 'error', message: err.message || 'Failed to add' });
-        setForm({ title: '', type: '', price: '', description: '', image: '' });
+  const addItem = async () => {
+    setUploading(true);
+    setUploadError(null);
+    try {
+      let fileUrl = '';
+      let fileField = '';
+      // Handle file upload if file is selected
+      if ((form as any).file instanceof File) {
+        const fileData = new FormData();
+        fileData.append('file', (form as any).file);
+        const uploadRes = await fetch(`${BACKEND_URL}/api/digitalgoods/upload`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('affluent_token')}`
+          },
+          body: fileData,
+        });
+        if (!uploadRes.ok) throw new Error('File upload failed');
+        const uploadData = await uploadRes.json();
+        fileField = uploadData.fileUrl; // e.g. /uploads/filename.pdf
+        fileUrl = `${BACKEND_URL}${uploadData.fileUrl}`;
+      }
+      const productPayload = {
+        ...form,
+        file: fileField,
+        fileUrl: fileUrl,
+      };
+      // Remove the local file object from payload
+      delete (productPayload as any).file;
+      const res = await fetch(`${BACKEND_URL}/api/digitalgoods`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('affluent_token')}`
+        },
+        body: JSON.stringify(productPayload),
       });
+      if (!res.ok) throw new Error((await res.json()).error || 'Failed to add');
+      setToast({ type: 'success', message: 'Digital good added!' });
+      setForm({ title: '', type: '', price: '', description: '', image: '', file: undefined });
+      fetchItems();
+    } catch (err: any) {
+      setToast({ type: 'error', message: err.message || 'Failed to add' });
+      setForm({ title: '', type: '', price: '', description: '', image: '', file: undefined });
+      setUploadError(err.message || 'File upload failed');
+    } finally {
+      setUploading(false);
+    }
   };
 
   const deleteItem = (id: string) => {
@@ -412,6 +458,15 @@ function DigitalGoodsAdminTable() {
             )}
           </div>
           <div>
+            <label className="block text-gray-700 font-medium mb-1" htmlFor="file">Digital Product File (PDF, etc.)</label>
+            <input id="file" name="file" type="file" accept=".pdf,.epub,.zip,.doc,.docx,.ppt,.pptx,.xls,.xlsx" onChange={handleChange} className="w-full" />
+            {uploading && <div className="text-blue-600 text-sm mt-1">Uploading...</div>}
+            {uploadError && <div className="text-red-600 text-sm mt-1">{uploadError}</div>}
+            {form.fileUrl && !uploading && (
+              <div className="text-green-700 text-xs mt-1">File uploaded: <a href={`${BACKEND_URL}${form.fileUrl}`} target="_blank" rel="noopener noreferrer" className="underline">{form.fileUrl.split('/').pop()}</a></div>
+            )}
+          </div>
+          <div>
             <label className="block text-gray-700 font-medium mb-1" htmlFor="description">Description</label>
             <input id="description" name="description" value={form.description} onChange={handleChange} placeholder="Description" className="border rounded px-4 py-2 w-full" />
           </div>
@@ -428,7 +483,6 @@ function DigitalGoodsAdminTable() {
 }
 
 export default function AdminDashboard() {
-  // ...existing state hooks
 
   // Logout handler
   const handleLogout = () => {
@@ -717,7 +771,6 @@ export default function AdminDashboard() {
           )}
           {section === 'digitalgoods' && (
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Digital Knowledge Hub</h2>
               <DigitalGoodsAdminTable />
               <AllAccessPassAdmin />
             </div>

@@ -4,6 +4,20 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const jwt = require('jsonwebtoken');
+const multer = require('multer');
+
+// Multer setup for digital goods uploads
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir);
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, uploadsDir),
+  filename: (req, file, cb) => {
+    // Unique filename: timestamp-originalname
+    const unique = Date.now() + '-' + file.originalname.replace(/[^a-zA-Z0-9.\-_]/g, '_');
+    cb(null, unique);
+  }
+});
+const upload = multer({ storage });
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -125,6 +139,17 @@ app.put('/api/allaccess', authMiddleware, (req, res) => {
   res.json(data);
 });
 
+// Digital Goods File Upload
+app.post('/api/digitalgoods/upload', authMiddleware, upload.single('file'), (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+  // Return file URL (relative path for frontend)
+  const fileUrl = `/uploads/${req.file.filename}`;
+  res.status(201).json({ fileUrl });
+});
+
+// Serve uploaded digital goods files (secure: only if purchased, but for now public for dev)
+app.use('/uploads', express.static(uploadsDir));
+
 // Digital Goods CRUD
 app.get('/api/digitalgoods', (req, res) => {
   res.json(readDigitalGoods());
@@ -226,6 +251,16 @@ app.delete('/api/products/:id', authMiddleware, (req, res) => {
 
 
 // Start server
+// Force download route for digital goods
+app.get('/download/:filename', (req, res) => {
+  const file = path.join(__dirname, 'uploads', req.params.filename);
+  res.download(file, err => {
+    if (err) {
+      res.status(404).json({ error: 'File not found' });
+    }
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Affluent Admin API running on http://localhost:${PORT}`);
 });
